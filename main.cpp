@@ -4,262 +4,195 @@
 #include <ctime>
 using namespace std;
 
-int game(int Balance, string PlayerName, int LevelChoice);
 void End();
 int Gratitude(int Balance);
-int Level(int Balance, string PlayerName);
-int Hint();
-int Cash(int Balance);
-basic_string<char> Player();
-int Chance();
 void drawLine(int n, char symbol);
-void rules3();
 void printProgress ();
 
 class DataPlayer{
+    std::string name;
+    int bal;
+    int level;
+    int bet;
+
+    char Choice;
+    int number1 = rand() % 10;
+    int number2 = rand() % 10;
+    int number3 = rand() % 10;
+    int useNumber1;
+    int useNumber2;
+    int useNumber3;
 public:
-    void WriteName(string Name){
-        cout << "\n\nEnter your name : ";
-        getline(cin, Name);
-        NamePlayer(Name);
+    void readNameFromUser(){
+        std::cout << "\n\nEnter your name : ";
+        getline(cin, name);
     }
-    basic_string<char> NamePlayer(string Name){
-        return Name;
+    auto getName(){
+        return name;
     }
-
-};
-
-class GameRules{
-public:
-    auto rules1()
-    {
-        cout << "\n\n";
-        drawLine(80,'-');
-        cout << "\t\tRULES OF THE GAME\n";
-        drawLine(80,'-');
-        cout << "\t1. Choose any number between 0 to 9\n";
-        cout << "\t2. If you win you will get 2 times of money you bet\n";
-        cout << "\t3. If you bet on wrong number you will lose your betting amount\n\n";
-        drawLine(80,'-');
-    }
-
-    auto rules2(){
-        cout << "\n\n";
-        drawLine(80,'-');
-        cout << "\t\tRULES OF THE GAME\n";
-        drawLine(80,'-');
-        cout << "\t1. Choose any combination of three numbers between 0 to 9. You can choose the same ones\n";
-        cout << "\t2. If you win you will get 5 times of money you bet\n";
-        cout << "\t3. If you bet on wrong number you will lose your betting amount\n\n";
-        drawLine(80,'-');
-    }
-    auto rules(){
-        cout << "\n\n";
-        drawLine(70,'-');
-        cout << "\t\tWELCOME IN OUR CASINO!\n";
-        drawLine(70,'-');
-        cout << "\tYou can choose 3 difficulty levels. The higher the level, more the winnings and more loss!\n";
-        cout << "\tEach level requires more balance\n";
-        cout << "\t1 level - Guess one number. Minimum: $50\n";
-        cout << "\t2 level - Guess three numbers. Minimum: $150\n";
-        cout << "\t3 level - Guess five numbers. Minimum: $500\n";
-    }
-};
-
-class Criterion{
-public:
-    int MinBal(int Bal){
+    int readBalanceFromUser(){
         do{
             cout << "\n\nEnter deposit amount to play game: $";
-            cin >> Bal;
-            if (Bal<50){
+            cin >> bal;
+            if (bal<50){
                 cout << "Please! Specify the correct balance!\n"
                      <<"\nRe-enter data\n ";
             }
-        }while(Bal<50);
-        return Bal;
+        }while(bal<50);
     }
-    int Bet(int Balance, string PlayerName){
-        int UseBal;
+    auto getBalance(){
+        return bal;
+    }
+    int chooseLevel(){
+        do{
+            cin >> level;
+            if ((level==2 && bal<150) || (level==3 && bal<500))
+            {
+                cout << "You don't have enough money for the current level of the game!\n"
+                     <<"\nRe-enter data\n ";}
+        }while((level==2 && bal<150) || (level==3 && bal<500));
+        return level;
+    }
+    int openBet(){
         do
         {
-            cout << "\n" << PlayerName <<", enter money to bet : $";
-            cin >> UseBal;
-            if(UseBal > Balance)
+            cout << "\n" << name <<", enter money to bet : $";
+            cin >> bet;
+            if(bet > bal)
+            {
                 cout << "Your betting amount is more than your current balance\n"
                      <<"\nRe-enter data\n ";
-        }while(UseBal > Balance);
-    }
-    int Level1(int Balance, string PlayerName, int LevelChoice){
-        char Choice;
-        int YourNum11;
-        int UseBal;
-        int Num11 = rand() % 10;
-        UseBal = Bet(Balance, PlayerName);
-        cout << "Guess your number to bet between 0 to 9 :";
-        cin >> YourNum11;
-        if(YourNum11 < 0 || YourNum11 > 9){
-            while(YourNum11 < 0 || YourNum11 > 9){
-                cout << "Please check the number! should be between 0 to 9\n"
-                     <<"\nRe-enter data\n ";
-                cout << "Guess your number to bet between 0 to 9 :";
-                cin >> YourNum11;
             }
-        }
-        Num11 = rand()%10;
-        if(Num11 == YourNum11)
+        }while(bet > bal);
+    }
+    int Level1(){
+        do{
+            cout << "Guess your number to bet between 0 to 9 :";
+            cin >> useNumber1;
+            if(useNumber1 < 0 || useNumber1 > 9){
+                cout << "Please check the number! should be between 0 to 9\n"
+                <<"\nRe-enter data\n ";
+            }
+        }while(useNumber1 < 0 || useNumber1 > 9);
+        if(number1 == useNumber1)
         {
-            cout << "\n\nGood Luck!! You won $" << UseBal * 2;
-            Balance = Balance + UseBal * 2;
+            cout << "\n\nGood Luck!! You won $" << bet * 2;
+            bal = bal + bet * 2;
         }
         else
         {
-            cout << "Bad Luck this time !! You lost $ "<< UseBal <<"\n";
-            Balance = Balance - UseBal;
+            cout << "Bad Luck this time !! You lost $ "<< bet <<"\n";
+            bal = bal - bet;
         }
-        cout << "\nThe winning number was: " << Num11 <<"\n";
-        cout << "\n"<<PlayerName<<", You have $ " << Balance << "\n";
-        if(Balance == 0)
+        cout << "\nThe winning number was: " << number1 <<"\n";
+        cout << "\n"<<name<<", You have $ " << bal << "\n";
+        if(bal == 0)
         {
-            Gratitude(Balance);
             End();
         }
         else{
             cout << "\n\n-->Do you want to play again (y/n)? ";
             cin >> Choice;
             if (Choice=='Y' || Choice=='y'){
-                Level(Balance, PlayerName);
+                End();
             }
             else{
                 End();
-                Gratitude(Balance);
+                Gratitude(bal);
             }
         }
     }
-    int Level2(int Balance, string PlayerName, int LevelChoice){
-        char Choice;
-        int YourNum21;
-        int YourNum22;
-        int YourNum23;
-        int Num21 = rand() % 10;
-        int Num22 = rand() % 10;
-        int Num23 = rand() % 10;
-        int UseBal = Bet(Balance, PlayerName);
-        do
-        {
-            cout << "\n" << PlayerName <<", enter money to bet : $";
-            cin >> UseBal;
-            if(UseBal > Balance)
-                cout << "Your betting amount is more than your current balance\n"
-                     <<"\nRe-enter data\n ";
-        }while(UseBal > Balance);
+    int Level2(){
         do
         {
             cout << "Guess your numbers to bet between 0 to 9 :";
-            cin >> YourNum21 >> YourNum22 >> YourNum23;
-            if((YourNum21 < 0 || YourNum21 > 9) || (YourNum22 < 0 || YourNum22 > 9) || (YourNum23 < 0 || YourNum23 > 9))
+            cin >> useNumber1 >> useNumber2 >> useNumber3;
+            if((useNumber1 < 0 || useNumber1 > 9) || (useNumber2 < 0 || useNumber2 > 9) || (useNumber3 < 0 || useNumber3 > 9))
                 cout << "Please check the number! should be between 0 to 9\n"
                      <<"\nRe-enter data\n ";
         }
-        while((YourNum21 < 0 || YourNum21 > 9) || (YourNum22 < 0 || YourNum22 > 9) || (YourNum23 < 0 || YourNum23 > 9));
+        while((useNumber1 < 0 || useNumber1 > 9) || (useNumber2 < 0 || useNumber2 > 9) || (useNumber3 < 0 || useNumber3 > 9));
 
-        if (YourNum21==5 && YourNum22 == 1 && YourNum23==3){
-            cout << "\n\nWow! You unlock easter egg! You get super price! "<< UseBal * 100;
-            Balance = Balance + UseBal * 100;
+        if (useNumber1==5 && useNumber2 == 1 && useNumber3==3){
+            cout << "\n\nWow! You unlock easter egg! You get super price! "<< bet * 100;
+            bal = bal + bet * 100;
         }
-        else if (Num21 == YourNum21 && Num22 == YourNum22 && Num23 == YourNum23){
-            cout << "\n\nGood Luck!! You won $" << UseBal * 5;
-            Balance = Balance + UseBal * 5;
+        else if (number1 == useNumber1 && number2 == useNumber2 && number3 == useNumber3){
+            cout << "\n\nGood Luck!! You won $" << bet * 5;
+            bal = bal + bet * 5;
         }
-        else if (Num21 ==7 && Num22 == 7 && Num23==7){
-            cout << "\n\nUltra Luck!! You won $" << UseBal*7;
-            Balance = Balance + UseBal * 7;
+        else if (number1 ==7 && number2 == 7 && number3==7){
+            cout << "\n\nUltra Luck!! You won $" << bet*7;
+            bal = bal + bet * 7;
         }
-        else if (Num21 == Num22 && Num22 == Num23 && Num23 == Num21){
-            cout << "\n\nMega Luck! You won $" << 100*Num21;
-            Balance = Balance + 100*Num21;
+        else if (number1 == number2 && number2 == number3 && number3 == number1){
+            cout << "\n\nMega Luck! You won $" << 100*number1;
+            bal = bal + 100*number1;
         }
         else{
-            cout << "Bad Luck this time !! You lost $ "<< UseBal*2 <<"\n";
-            Balance = Balance - UseBal*2;
+            cout << "Bad Luck this time !! You lost $ "<< bet*2 <<"\n";
+            bal = bal - bet*2;
         }
-        cout << "\nThe winning number was: " << Num21 << Num22 << Num23 <<"\n";
-        cout << "\n"<<PlayerName<<", You have $ " << Balance << "\n";
-        if(Balance == 0)
+        cout << "\nThe winning number was: " << number1 << number2 << number3 <<"\n";
+        cout << "\n"<<name<<", You have $ " << bal << "\n";
+        if(bal == 0)
         {
-            Gratitude(Balance);
+
             End();
         }
         else{
             cout << "\n\n-->Do you want to play again (y/n)? ";
             cin >> Choice;
             if (Choice=='Y' || Choice=='y'){
-                Level(Balance, PlayerName);
+
             }
             else{
                 End();
-                Gratitude(Balance);
+                Gratitude(bal);
             }
         }
     }
 
 };
 
-int main() {
-    string PlayerName;
-    int Balance;
-    drawLine(50, '_');
-    cout << "\n\n\n\t\tCASINO GAME\n\n\n\n";
-    drawLine(50, '_');
-
-    cout << "\n\nEnter your name : ";
-    getline(cin, PlayerName);
-
-    GameRules objGameRules;
-    objGameRules.rules();
-
-    Criterion objCriterion;
-    Balance = objCriterion.MinBal(Balance);
-
-    Level(Balance, PlayerName);
-    return 0;
+auto rules() {
+    cout << "\n\n";
+    drawLine(70, '-');
+    cout << "\t\tWELCOME IN OUR CASINO!\n";
+    drawLine(70, '-');
+    cout << "\tYou can choose 3 difficulty levels. The higher the level, more the winnings and more loss!\n";
+    cout << "\tEach level requires more balance\n";
+    cout << "\t1 level - Guess one number. Minimum: $50\n";
+    cout << "\t2 level - Guess three numbers. Minimum: $150\n";
+    cout << "\t3 level - Guess five numbers. Minimum: $500\n";
 }
-int Level(int Balance, string PlayerName){
-    int LevelChoice;
-    cout << "\n\nYour current balance is $ " << Balance << "\n";
-    cout << "\n" << PlayerName << ", choose level (1,2,3):";
-    cin >> LevelChoice;
-    if ((LevelChoice==2 && Balance<150) || (LevelChoice==3 && Balance<500) || LevelChoice<1 || LevelChoice>3){
-        while((LevelChoice==2 && Balance<150) || (LevelChoice==3 && Balance<500)){
-        cout << "You don't have enough money for the current level of the game or you entered the level incorrectly\n"
-             <<"\nRe-enter data\n ";
-            Level(Balance, PlayerName);
-        }
-    }
-    game(Balance, PlayerName, LevelChoice);
-}
-int game(int Balance, string PlayerName, int LevelChoice) {
-    Criterion objCriterion;
-    GameRules objGameRules;
-    srand(time(0));
-    if (LevelChoice == 1){
-        objGameRules.rules1();
-        objCriterion.Level1(Balance, PlayerName,LevelChoice);
-    }
-    if (LevelChoice==2){
-        int YourNum21,YourNum22,YourNum23;
-        objGameRules.rules2();
-        objCriterion.Bet(Balance, PlayerName);
-        objCriterion.Level2(Balance, PlayerName,LevelChoice);
-    }
-
-    return 0;
+auto rules1(){
+    cout << "\n\n";
+    drawLine(80,'-');
+    cout << "\t\tRULES OF THE GAME\n";
+    drawLine(80,'-');
+    cout << "\t1. Choose any number between 0 to 9\n";
+    cout << "\t2. If you win you will get 2 times of money you bet\n";
+    cout << "\t3. If you bet on wrong number you will lose your betting amount\n\n";
+    drawLine(80,'-');
 }
 
-
-int Hint(){
-
+auto rules2(){
+    cout << "\n\n";
+    drawLine(80,'-');
+    cout << "\t\tRULES OF THE GAME\n";
+    drawLine(80,'-');
+    cout << "\t1. Choose any combination of three numbers between 0 to 9. You can choose the same ones\n";
+    cout << "\t2. If you win you will get 5 times of money you bet\n";
+    cout << "\t3. If you bet on wrong number you will lose your betting amount\n\n";
+    drawLine(80,'-');
 }
+
+auto infoNameBal(string name, int bal){
+        cout << "\n\nYour current balance is $ " << bal << "\n";
+        cout << "\n" << name << ", choose level (1,2,3):";
+};
+
 void End(){
     cout << "\n\n";
     drawLine(45,'-');
@@ -282,7 +215,42 @@ void drawLine(int n, char symbol)
         cout << symbol;
     cout << "\n" ;
 }
-auto Player(string Name){
-    return Name;
+
+
+int main() {
+    srand(time(0));
+
+    DataPlayer Player;
+
+    string PlayerName;
+    int Balance;
+    int Level;
+
+    drawLine(50, '_');
+    cout << "\n\n\n\t\tCASINO GAME\n\n\n\n";
+    drawLine(50, '_');
+    Player.readNameFromUser();
+    Player.readBalanceFromUser();
+    PlayerName = Player.getName();
+    Balance = Player.getBalance();
+    rules();
+    infoNameBal(PlayerName, Balance);
+
+    Level = Player.chooseLevel();
+
+    Player.openBet();
+    if (Level == 1){
+        rules1();
+        Player.Level1();
+    }
+    if (Level == 2){
+        rules2();
+        Player.Level2();
+    }
+
+    return 0;
 }
+
+
+
 
