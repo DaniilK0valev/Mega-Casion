@@ -1,0 +1,9 @@
+D:/Programming/Mega-Casion-main/cmake-build-debug/CMakeFiles/Mega-Casion.dir
+D:/Programming/Mega-Casion-main/cmake-build-debug/CMakeFiles/edit_cache.dir
+D:/Programming/Mega-Casion-main/cmake-build-debug/CMakeFiles/Mega-Casion_test.dir
+D:/Programming/Mega-Casion-main/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+D:/Programming/Mega-Casion-main/cmake-build-debug/CMakeFiles/test.dir
+D:/Programming/Mega-Casion-main/cmake-build-debug/doctest/CMakeFiles/rebuild_cache.dir
+D:/Programming/Mega-Casion-main/cmake-build-debug/doctest/CMakeFiles/test.dir
+D:/Programming/Mega-Casion-main/cmake-build-debug/doctest/CMakeFiles/doctest.dir
+D:/Programming/Mega-Casion-main/cmake-build-debug/doctest/CMakeFiles/edit_cache.dir
