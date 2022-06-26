@@ -53,8 +53,6 @@ auto rules1();
 
 auto rules2();
 
-auto infoNameBal(string name, int bal);
-
 void End();
 
 void Gratitude(int Balance);
