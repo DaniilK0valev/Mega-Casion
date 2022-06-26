@@ -11,7 +11,7 @@ public:
     int bal;
     int level;
     int bet;
-
+    ///Система выдает случайные числа///
     char Choice;
     int number1 = rand() % 10;
     int number2 = rand() % 10;
@@ -19,6 +19,7 @@ public:
     int number4 = rand() % 10;
     int number5 = rand() % 10;
     int useNumber1, useNumber2, useNumber3, useNumber4, useNumber5;
+    ///Игра работает///
     bool inGame = true;
 
     void readNameFromUser();
