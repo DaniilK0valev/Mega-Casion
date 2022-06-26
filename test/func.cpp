@@ -31,6 +31,8 @@ auto DataPlayer::getBalance(){
 
 int DataPlayer::chooseLevel(){
     do{
+        cout << "\n\nYour current balance is $ " << bal << "\n";
+        cout << "\n" << name << ", choose level (1,2,3):";
         cin >> level;
         if (not checkLevel())
         {
@@ -245,11 +247,6 @@ auto rules3(){
     drawLine(80,'-');
 }
 
-auto infoNameBal(string name, int bal){
-    cout << "\n\nYour current balance is $ " << bal << "\n";
-    cout << "\n" << name << ", choose level (1,2,3):";
-};
-
 void End(){
     cout << "\n\n";
     drawLine(45,'-');
@@ -258,8 +255,8 @@ void End(){
 }
 
 void Gratitude(int Balance){
-    if (Balance==0){
-        cout << "\n\nThanks for playing game. You have no money to play";
+    if (Balance<=0){
+        cout << "\n\nThanks for playing game. You have no money to play\n\n";
     }
     else{
         cout << "\n\nThanks for playing game. Your balance amount is $ " << Balance << "\n\n";
