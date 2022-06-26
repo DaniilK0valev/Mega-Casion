@@ -1,0 +1,21 @@
+# ninja log v5
+4	920	6779414916832500	CMakeFiles/Mega-Casion.dir/main.cpp.obj	e0f64a60ef120b5c
+72	4182	6778905249742716	doctest/CMakeFiles/doctest.dir/doctest.cpp.obj	96817ffe3f56474e
+921	1353	6779414920917010	Mega-Casion.exe	378e964d85c48ada
+5	1179	6779390425374491	CMakeFiles/Mega-Casion_test.dir/test/test.cpp.obj	87cf56609d3e0ad5
+4187	5065	6778905258680802	doctest/libdoctest.a	b4757a9cf692c179
+1181	2422	6779390437576881	Mega-Casion_test.exe	df8cd0b08b2de0f
+6	3140	6779428359439492	CMakeFiles/Mega-Casion.dir/main.cpp.obj	275f80a381f99efb
+3146	4257	6779428370625496	Mega-Casion.exe	23589024ff5423d9
+85	2982	6779432257345994	CMakeFiles/Mega-Casion.dir/main.cpp.obj	275f80a381f99efb
+2983	3821	6779432265328146	Mega-Casion.exe	23589024ff5423d9
+27	6849	6779434609727007	CMakeFiles/Mega-Casion.dir/main.cpp.obj	275f80a381f99efb
+6850	7835	6779434619483362	Mega-Casion.exe	23589024ff5423d9
+69	6608	6779435934092105	CMakeFiles/Mega-Casion.dir/main.cpp.obj	275f80a381f99efb
+6610	7432	6779435942326240	Mega-Casion.exe	23589024ff5423d9
+64	5998	6779436379586478	CMakeFiles/Mega-Casion.dir/main.cpp.obj	275f80a381f99efb
+5999	6728	6779436386869327	Mega-Casion.exe	23589024ff5423d9
+6	9034	6779437595826415	CMakeFiles/Mega-Casion_test.dir/test/test.cpp.obj	54c5ba55e2ecc8c7
+122	25002	6779437755782332	doctest/CMakeFiles/doctest.dir/doctest.cpp.obj	14a6408130f71c9a
+25006	25801	6779437763912462	doctest/libdoctest.a	8bc2b895961a2224
+25801	26616	6779437772002310	Mega-Casion_test.exe	f35de63222710b2a
