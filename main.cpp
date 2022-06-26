@@ -1,20 +1,27 @@
 #include "test/func.cpp"
 using namespace std;
-
+/**
+ * Функция main
+ */
 int main() {
     srand(time(NULL));
-    ///Открываем доступ к данным для игрока///
+    /**
+     * Активируем игру
+     */
     DataPlayer Player;
-    ///Печатаются границы///
+    /**
+     * Печатаем границы
+     */
     drawLine(50, '_');
-    ///Ввыводит текст с названием игры и дальше мы вводим необходимую информацию для начала игры///
     cout << "\n\n\n\t\tCASINO GAME\n\n\n\n";
         drawLine(50, '_');
         Player.readNameFromUser();
         Player.name = Player.getName();
         Player.readBalanceFromUser();
         Player.bal = Player.getBalance();
-    ///Пока игра не объявлена завершенной, она будет работать и мы сможем играть, выбирая уровень///
+    /**
+     * Пока игра не завершена игроком или системой, можно играть партию.
+     */
     while (Player.inGame) {
         rules();
 
