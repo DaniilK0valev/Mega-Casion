@@ -2,36 +2,39 @@
 using namespace std;
 
 int main() {
-    srand(time(0));
+    srand(time(NULL));
 
     DataPlayer Player;
 
     string PlayerName;
-    int Balance;
-    int Level;
 
     drawLine(50, '_');
     cout << "\n\n\n\t\tCASINO GAME\n\n\n\n";
-    drawLine(50, '_');
-    Player.readNameFromUser();
-    Player.readBalanceFromUser();
-    PlayerName = Player.getName();
-    Balance = Player.getBalance();
-    rules();
-    infoNameBal(PlayerName, Balance);
+        drawLine(50, '_');
+        Player.readNameFromUser();
+        Player.name = Player.getName();
+        Player.readBalanceFromUser();
+        Player.bal = Player.getBalance();
+    while (Player.inGame) {
+        rules();
+        infoNameBal(PlayerName, Player.bal);
 
-    Level = Player.chooseLevel();
+        Player.level = Player.chooseLevel();
 
-    Player.openBet();
-    if (Level == 1){
-        rules1();
-        Player.Level1();
+        Player.openBet();
+        if (Player.level == 1) {
+            rules1();
+            Player.Level1();
+        }
+        if (Player.level == 2) {
+            rules2();
+            Player.Level2();
+        }
+        if (Player.level == 3) {
+            rules3();
+            Player.Level3();
+        }
     }
-    if (Level == 2){
-        rules2();
-        Player.Level2();
-    }
-
     return 0;
 }
 
