@@ -17,7 +17,6 @@ int main() {
         Player.bal = Player.getBalance();
     while (Player.inGame) {
         rules();
-        infoNameBal(PlayerName, Player.bal);
 
         Player.level = Player.chooseLevel();
 
