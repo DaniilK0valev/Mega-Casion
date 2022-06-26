@@ -3,18 +3,18 @@ using namespace std;
 
 int main() {
     srand(time(NULL));
-
+    ///Открываем доступ к данным для игрока///
     DataPlayer Player;
-
-    string PlayerName;
-
+    ///Печатаются границы///
     drawLine(50, '_');
+    ///Ввыводит текст с названием игры и дальше мы вводим необходимую информацию для начала игры///
     cout << "\n\n\n\t\tCASINO GAME\n\n\n\n";
         drawLine(50, '_');
         Player.readNameFromUser();
         Player.name = Player.getName();
         Player.readBalanceFromUser();
         Player.bal = Player.getBalance();
+    ///Пока игра не объявлена завершенной, она будет работать и мы сможем играть, выбирая уровень///
     while (Player.inGame) {
         rules();
 
