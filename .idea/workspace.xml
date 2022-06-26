@@ -3,7 +3,7 @@
   <component name="CMakeReloadState">
     <option name="reloaded" value="true" />
   </component>
-  <component name="CMakeRunConfigurationManager">
+  <component name="CMakeRunConfigurationManager" shouldGenerate="true" shouldDeleteObsolete="true">
     <generated>
       <config projectName="untitled" targetName="Mega-Casion_test" />
       <config projectName="untitled" targetName="doctest" />
@@ -25,6 +25,7 @@
   <component name="ClangdSettings">
     <option name="formatViaClangd" value="false" />
   </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="CMakeBuildProfile:Debug" />
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
@@ -45,10 +46,16 @@
     <property name="cidr.known.project.marker" value="true" />
     <property name="cmake.loaded.for.project" value="true" />
   </component>
-  <component name="RunManager" selected="CMake Application.Mega-Casion">
+  <component name="RunManager" selected="Doctest.All in test.cpp">
     <configuration default="true" type="CLionExternalRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true">
       <method v="2">
         <option name="CLION.EXTERNAL.BUILD" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="All in test.cpp" type="CMakeDoctestTestRunConfigurationType" factoryName="doctest Test" temporary="true" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="untitled" TARGET_NAME="Mega-Casion_test" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="untitled" RUN_TARGET_NAME="Mega-Casion_test" TEST_PATTERN="[#*test.cpp]" TEST_MODE="PATTERN">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+        <option name="BeforeTestRunTask" enabled="true" />
       </method>
     </configuration>
     <configuration name="Checking balance management" type="CMakeDoctestTestRunConfigurationType" factoryName="doctest Test" temporary="true" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="untitled" TARGET_NAME="Mega-Casion_test" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="untitled" RUN_TARGET_NAME="Mega-Casion_test" TEST_METHOD="Checking balance management" TEST_MODE="SUITE_TEST">
@@ -91,9 +98,11 @@
       <item itemvalue="Doctest.Checking balance management" />
       <item itemvalue="Doctest.Checking balance management." />
       <item itemvalue="Doctest.Checking level choosing." />
+      <item itemvalue="Doctest.All in test.cpp" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Doctest.All in test.cpp" />
         <item itemvalue="Doctest.Checking balance management." />
         <item itemvalue="Doctest.Checking level choosing." />
         <item itemvalue="Doctest.Checking balance management" />
@@ -110,7 +119,7 @@
       <updated>1656185000751</updated>
       <workItem from="1656185002721" duration="3659000" />
       <workItem from="1656235751742" duration="2906000" />
-      <workItem from="1656238896343" duration="14000" />
+      <workItem from="1656238896343" duration="1867000" />
     </task>
     <servers />
   </component>
