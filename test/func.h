@@ -16,9 +16,10 @@ public:
     int number1 = rand() % 10;
     int number2 = rand() % 10;
     int number3 = rand() % 10;
-    int useNumber1;
-    int useNumber2;
-    int useNumber3;
+    int number4 = rand() % 10;
+    int number5 = rand() % 10;
+    int useNumber1, useNumber2, useNumber3, useNumber4, useNumber5;
+    bool inGame = true;
 
     void readNameFromUser();
 
@@ -41,6 +42,10 @@ public:
     void Level1();
 
     void Level2();
+
+    void Level3();
+
+    void GameOver();
 };
 auto rules();
 
@@ -52,7 +57,7 @@ auto infoNameBal(string name, int bal);
 
 void End();
 
-int Gratitude(int Balance);
+void Gratitude(int Balance);
 
 void drawLine(int n, char symbol);
 

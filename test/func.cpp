@@ -84,19 +84,18 @@ void DataPlayer::Level1(){
     }
     cout << "\nThe winning number was: " << number1 <<"\n";
     cout << "\n"<<name<<", You have $ " << bal << "\n";
-    if(bal == 0)
+    if(not checkBal())
     {
-        End();
+        GameOver();
     }
     else{
         cout << "\n\n-->Do you want to play again (y/n)? ";
         cin >> Choice;
         if (Choice=='Y' || Choice=='y'){
-            End();
+            cout << "Let's play another one!!!\n";
         }
         else{
-            End();
-            Gratitude(bal);
+            GameOver();
         }
     }
 }
@@ -134,22 +133,71 @@ void DataPlayer::Level2(){
     }
     cout << "\nThe winning number was: " << number1 << number2 << number3 <<"\n";
     cout << "\n"<<name<<", You have $ " << bal << "\n";
-    if(bal == 0)
+    if(not checkBal())
     {
 
-        End();
+        GameOver();
     }
     else{
         cout << "\n\n-->Do you want to play again (y/n)? ";
         cin >> Choice;
         if (Choice=='Y' || Choice=='y'){
-
+            cout << "Let's play another one!!!\n";
         }
         else{
-            End();
-            Gratitude(bal);
+            GameOver();
         }
     }
+}
+
+void DataPlayer::Level3(){
+    do
+    {
+        cout << "Guess your numbers to bet between 0 to 9 :";
+        cin >> useNumber1 >> useNumber2 >> useNumber3 >> useNumber4 >> useNumber5;
+        if((useNumber1 < 0 || useNumber1 > 9) || (useNumber2 < 0 || useNumber2 > 9) || (useNumber3 < 0 || useNumber3 > 9) || (useNumber4 < 0 || useNumber4 > 9) || (useNumber5 < 0 || useNumber5 > 9))
+            cout << "Please check the number! should be between 0 to 9\n"
+                 <<"\nRe-enter data\n ";
+    }
+    while((useNumber1 < 0 || useNumber1 > 9) || (useNumber2 < 0 || useNumber2 > 9) || (useNumber3 < 0 || useNumber3 > 9) || (useNumber4 < 0 || useNumber4 > 9) || (useNumber5 < 0 || useNumber5 > 9));
+
+    if (useNumber1 == 5 && useNumber2 == 1 && useNumber3 == 1 && useNumber4 == 0 && useNumber5 == 3)
+    {
+        cout << "\n\nWow! You unlock easter egg! You get super price! "<< bet * 100;
+        bal = bal + bet * 100;
+    }
+    else if (number1 == useNumber1 && number2 == useNumber2 && number3 == useNumber3 && number4 == useNumber4 && number5 == useNumber5){
+        cout << "\n\nGood Luck!! You won $" << bet * 10;
+        bal = bal + bet * 10;
+    }
+    else{
+        cout << "Bad Luck this time !! You lost $ "<< bet*2 <<"\n";
+        bal = bal - bet*2;
+    }
+    cout << "\nThe winning number was: " << number1 << number2 << number3<< number4 << number5  <<"\n";
+    cout << "\n"<<name<<", You have $ " << bal << "\n";
+    if(not checkBal())
+    {
+
+        GameOver();
+    }
+    else{
+        cout << "\n\n-->Do you want to play again (y/n)? ";
+        cin >> Choice;
+        if (Choice=='Y' || Choice=='y'){
+            cout << "Let's play another one!!!\n";
+        }
+        else{
+            GameOver();
+        }
+    }
+}
+
+void DataPlayer::GameOver()
+{
+    inGame = false;
+    End();
+    Gratitude(bal);
 }
 
 auto rules() {
@@ -186,6 +234,17 @@ auto rules2(){
     drawLine(80,'-');
 }
 
+auto rules3(){
+    cout << "\n\n";
+    drawLine(80,'-');
+    cout << "\t\tRULES OF THE GAME\n";
+    drawLine(80,'-');
+    cout << "\t1. Choose any combination of five numbers between 0 to 9. You can choose the same ones\n";
+    cout << "\t2. If you win you will get 10 times of money you bet\n";
+    cout << "\t3. If you bet on wrong number you will lose your betting amount\n\n";
+    drawLine(80,'-');
+}
+
 auto infoNameBal(string name, int bal){
     cout << "\n\nYour current balance is $ " << bal << "\n";
     cout << "\n" << name << ", choose level (1,2,3):";
@@ -196,10 +255,9 @@ void End(){
     drawLine(45,'-');
     cout << "\t\tGAME OVER\n";
     drawLine(45,'-');
-
 }
 
-int Gratitude(int Balance){
+void Gratitude(int Balance){
     if (Balance==0){
         cout << "\n\nThanks for playing game. You have no money to play";
     }
