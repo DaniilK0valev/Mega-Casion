@@ -21,7 +21,7 @@ public:
     int number5 = rand() % 10;
     ///Цифры, которые загадывает игрок
     int useNumber1, useNumber2, useNumber3, useNumber4, useNumber5;
-    ///Цикл с возможностью повторить партию работает
+    ///Пока значение правда, цикл с возможность повторить партию работает
     bool inGame = true;
 
     void readNameFromUser();
