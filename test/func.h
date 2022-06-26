@@ -1,25 +1,27 @@
 #include <iostream>
-#include <string> // Нужно для написания строк
-#include <cstdlib> // Нужно для использования рандома чисел
+#include <string> /// Нужно для написания строк
+#include <cstdlib> /// Нужно для использования рандома чисел
 #include <ctime>
 using namespace std;
 
 
 class DataPlayer {
+    ///Все данные доступны всем функциям данного класса
 public:
     std::string name;
     int bal;
     int level;
     int bet;
-    ///Система выдает случайные числа///
+    ///Игра загадывает случайные цифры
     char Choice;
     int number1 = rand() % 10;
     int number2 = rand() % 10;
     int number3 = rand() % 10;
     int number4 = rand() % 10;
     int number5 = rand() % 10;
+    ///Цифры, которые загадывает игрок
     int useNumber1, useNumber2, useNumber3, useNumber4, useNumber5;
-    ///Игра работает///
+    ///Цикл с возможностью повторить партию работает
     bool inGame = true;
 
     void readNameFromUser();
